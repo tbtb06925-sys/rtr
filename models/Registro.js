@@ -1,14 +1,18 @@
-
 const mongoose = require("mongoose");
 
-const RegistroSchema = new mongoose.Schema({
-    usuarioId:String,
-    material:String,
-    cantidad:Number,
-    fecha:{
-        type:Date,
-        default:Date.now
-    }
+const registroSchema = new mongoose.Schema({
+  usuarioId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User"
+  },
+  tipoResiduo: String,
+  cantidad: Number,
+  semana: Number,
+  mes: Number,
+  fecha: {
+    type: Date,
+    default: Date.now
+  }
 });
 
-module.exports = mongoose.model("Registro", RegistroSchema);
+module.exports = mongoose.model("Registro", registroSchema);
